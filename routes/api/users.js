@@ -5,6 +5,8 @@ const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
 //test route
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
@@ -19,7 +21,8 @@ router.post("/register", (req, res) => {
 
     User.findOne({ handle: req.body.handle }).then(user => {
         if (user) {
-            errors.handle = "User already exists";
+            // Use the validations to send the error
+            errors.email = 'Email already exists';
             return res.status(400).json(errors);
         } else {
             const newUser = new User({
@@ -64,7 +67,8 @@ router.post("/login", (req, res) => {
 
     User.findOne({ handle }).then(user => {
         if (!user) {
-            errors.handle = "This user does not exist";
+            // Use the validations to send the error
+            errors.email = 'User not found';
             return res.status(400).json(errors);
         }
 
