@@ -6,9 +6,9 @@ class MainPage extends React.Component {
     return (
       <div>
         <p>A Twitter Clone</p>
-        <footer>
+        {/* <footer>
           Copyright &copy; 2019 Chirper
-        </footer>
+        </footer> */}
       </div>
     );
   }
