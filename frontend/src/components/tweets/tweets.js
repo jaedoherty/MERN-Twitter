@@ -11,7 +11,7 @@ class Tweet extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchTweets();
   }
 
