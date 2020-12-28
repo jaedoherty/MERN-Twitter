@@ -11,7 +11,7 @@ const users = require("./routes/api/users");
 const tweets = require("./routes/api/tweets");
 
 mongoose
-    .connect(db, { useNewUrlParser: true })
+    .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
 const JwtStrategy = require('passport-jwt').Strategy;
